@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXUS GAMES | Register</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,0.75),
+        rgba(0,0,0,0.85)
+    ),
+    url("https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1920&q=80");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.register-container{
+    width:450px;
+    padding:40px;
+    border-radius:20px;
+
+    background:rgba(15,15,25,.85);
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    box-shadow:
+    0 0 25px rgba(0,191,255,.2),
+    0 0 30px rgba(138,43,226,.2);
+}
+
+.logo{
+    text-align:center;
+    font-size:35px;
+    font-weight:700;
+    color:#00bfff;
+}
+
+.logo span{
+    color:#8a2eff;
+}
+
+.subtitle{
+    text-align:center;
+    color:#ccc;
+    margin-top:8px;
+    margin-bottom:25px;
+}
+
+.input-group{
+    margin-bottom:15px;
+}
+
+.input-group input{
+    width:100%;
+    padding:14px;
+
+    border:none;
+    outline:none;
+
+    border-radius:10px;
+
+    background:#1d2233;
+    color:white;
+}
+
+.input-group input::placeholder{
+    color:#999;
+}
+
+.register-btn{
+    width:100%;
+    padding:14px;
+
+    border:none;
+    border-radius:10px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #00bfff,
+        #8a2eff
+    );
+
+    color:white;
+    font-size:16px;
+    font-weight:600;
+
+    cursor:pointer;
+}
+
+.register-btn:hover{
+    opacity:.9;
+}
+
+.login-link{
+    text-align:center;
+    margin-top:20px;
+    color:#ccc;
+}
+
+.login-link a{
+    color:#00bfff;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.login-link a:hover{
+    text-decoration:underline;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="register-container">
+
+<div class="logo">
+NEXUS <span>GAMES</span>
+</div>
+
+<div class="subtitle">
+Create Your Gamer Account
+</div>
+
+<form id="registerForm">
+
+<div class="input-group">
+<input
+type="text"
+id="username"
+placeholder="Username"
+required>
+</div>
+
+<div class="input-group">
+<input
+type="email"
+id="email"
+placeholder="Email Address"
+required>
+</div>
+
+<div class="input-group">
+<input
+type="password"
+id="password"
+placeholder="Password"
+required>
+</div>
+
+<div class="input-group">
+<input
+type="password"
+id="confirmPassword"
+placeholder="Confirm Password"
+required>
+</div>
+
+<button
+type="submit"
+class="register-btn">
+CREATE ACCOUNT
+</button>
+
+</form>
+
+<div class="login-link">
+Already have an account?
+<a href="index.html">
+Sign In
+</a>
+</div>
+
+</div>
+
+<script>
+
+document
+.getElementById("registerForm")
+.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const username =
+    document.getElementById("username").value;
+
+    const email =
+    document.getElementById("email").value;
+
+    const password =
+    document.getElementById("password").value;
+
+    const confirmPassword =
+    document.getElementById("confirmPassword").value;
+
+    if(password !== confirmPassword){
+
+        alert("Passwords do not match!");
+        return;
+    }
+
+    const user = {
+        username,
+        email,
+        password
+    };
+
+    localStorage.setItem(
+        "nexusUser",
+        JSON.stringify(user)
+    );
+
+    alert(
+        "Account created successfully! Redirecting to Login..."
+    );
+
+    window.location.href =
+    "index.html";
+
+});
+
+</script>
+
+</body>
+</html>
